@@ -4,7 +4,6 @@ import { motion } from 'framer-motion'
 
 const LoginPage = () => {
   const [darkMode, setDarkMode] = useState(true)
-
   return (
     <div className={darkMode ? 'bg-black text-gray-300 min-h-screen' : 'bg-white text-black min-h-screen'}>
       <div className='flex justify-end w-full p-4'>
