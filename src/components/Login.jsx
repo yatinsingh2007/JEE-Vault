@@ -1,7 +1,6 @@
 import React, { useState } from 'react'
 import { Sun, Moon } from 'lucide-react'
 import { motion } from 'framer-motion'
-
 const LoginPage = () => {
   const [darkMode, setDarkMode] = useState(true)
   return (

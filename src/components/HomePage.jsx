@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import {Sun,Moon} from 'lucide-react'
 import { motion } from 'framer-motion'
+import {Link} from 'react-router-dom'
 const HomePage = () => {
   const [darkMode , setDarkMode] = useState(true)
   return (
@@ -29,13 +30,12 @@ const HomePage = () => {
             </motion.div>
             <div className='p-20 flex justify-center gap-10'>
               <button className="p-2 px-6 rounded-lg bg-gradient-to-r from-yellow-400 to-yellow-600 text-white font-semibold shadow-md hover:scale-105 transition-transform">
-                Sign Up
+                <Link to='/signup'>Sign Up</Link>
               </button>
               <button className="p-2 px-6 rounded-lg bg-gradient-to-r from-yellow-400 to-yellow-600 text-white font-semibold shadow-md hover:scale-105 transition-transform">
-                <a href=''>Login</a>
+                <Link to='/login'>Login</Link>
               </button>
             </div>
-
         </div>
     </>
   )
