@@ -14,7 +14,7 @@ const Signup = () => {
             )}
         </div>
         <motion.div className='flex flex-col items-center justify-center px-4 py-10 md:px-20' initial={{ opacity: 0, y: 100 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 1.2, ease: 'easeOut' }}>
-            <h1 className='md:text-5xl font-semibold text-transparent bg-clip-text bg-gradient-to-br from-amber-400 via-orange-500 to-amber-500 text-3xl'>Create An Account in JEE-Vault and Start your remarkable Journey</h1>
+            <h1 className={darkMode ? 'text-4xl md:text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 via-white to-indigo-300 mb-10' : 'text-4xl md:text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-yellow-500 via-slate-800 to-yellow-500 mb-10'}>Create An Account in JEE-Vault and Start your remarkable Journey</h1>
             <div className='w-full md:w-1/2 lg:w-1/3 bg-gradient-to-br from-yellow-400 via-white to-indigo-300 p-8 rounded-xl shadow-lg shadow-yellow-300 mt-32 md:mt-40'>
                 <form>
                     <div className='flex flex-col'>
