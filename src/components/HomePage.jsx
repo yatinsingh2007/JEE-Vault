@@ -8,7 +8,7 @@ const HomePage = () => {
     <>
         <div className= {darkMode ? 'bg-black text-gray-300 min-h-screen' : 'bg-white text-black min-h-screen'}>
             <div className='flex justify-end w-screen p-2 relative'>
-                { !darkMode ? <Moon className='cursor-pointer'onClick={() => setDarkMode(!darkMode)}/> : <Sun className='cursor-pointer' onClick={() => setDarkMode(!darkMode)}/> }
+                { !darkMode ? <Moon className='cursor-pointer'onClick={() => setDarkMode(!darkMode)}/> : <Sun className='cursor-pointer text-yellow-400' onClick={() => setDarkMode(!darkMode)}/> }
             </div>
             <div className='text-center flex flex-col justify-center items-center gap-10 pt-48 relative'>
                 <motion.div initial={{ opacity: 0 , y : -100 }} animate={{ opacity: 1 , y  :0 }} transition={{ duration: 2 , ease : 'easeOut' }}><h1 className={darkMode ? `md:text-8xl md:font-bold text-6xl font-semibold text-transparent bg-clip-text bg-gradient-to-r from-[#d4af37] via-[#e6e8ec] to-[#b0c4de]` : `md:text-8xl md:font-bold text-6xl font-semibold text-transparent bg-clip-text bg-gradient-to-r from-[#b29600] via-[#ffe680] to-[#b29600]`}>Welcome To JEE-Vault</h1></motion.div>
