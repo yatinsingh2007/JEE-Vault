@@ -3,6 +3,9 @@ import HomePage from './components/HomePage.jsx';
 import Login from './components/Login.jsx'
 import {BrowserRouter , Route , Routes} from 'react-router-dom'
 import Signup from './components/Signup.jsx';
+import ForgotPassword from './components/ForgotPassword.jsx';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 function App() {
   return (
     <>
@@ -11,8 +14,10 @@ function App() {
               <Route path = '/' element = {<HomePage/>}/>
               <Route path = '/login' element = {<Login/>}/>
               <Route path = '/signup' element = {<Signup/>}/>
+              <Route path = '/forgot-password' element = {<ForgotPassword/>}/>
           </Routes>
        </BrowserRouter>
+       <ToastContainer position="top-right" autoClose={3000} />
     </>
   )
 }
