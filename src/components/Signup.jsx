@@ -2,10 +2,12 @@ import React , {useState} from 'react'
 import {Sun , Moon} from 'lucide-react'
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../firebase/firebase";
-import {motion} from 'framer-motion'
-import {toast} from 'react-toastify'
+import {motion} from 'framer-motion';
+import {toast} from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { useNavigate } from 'react-router-dom';
 const Signup = () => {
+    const navigate = useNavigate();
     const [darkMode, setDarkMode] = useState(true);
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
@@ -16,6 +18,7 @@ const Signup = () => {
             const user = userCredential.user;
             console.log(user);
             toast.success("Account created successfully!");
+            navigate("/login");
         } catch (error) {
             console.log("Error signing up:", error);
             if (error.code === "auth/email-already-in-use") {
@@ -54,9 +57,6 @@ const Signup = () => {
                     <div className='flex justify-between mb-2'>
                         <button type='submit' className='mt-4 p-2 rounded-lg bg-gradient-to-r from-yellow-400 to-yellow-600 text-white font-semibold shadow-md hover:scale-105 transition-transform duration-300'>
                             Sign Up
-                        </button>
-                        <button type='submit' className='mt-4 p-2 rounded-lg bg-gradient-to-r from-yellow-400 to-yellow-600 text-white font-semibold shadow-md hover:scale-105 transition-transform duration-300'>
-                            Sign up with Google
                         </button>
                     </div>
                 </form>
