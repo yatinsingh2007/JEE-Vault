@@ -1,9 +1,12 @@
 import React , {useState} from 'react'
 import {Sun , Moon} from 'lucide-react'
 import {motion} from 'framer-motion'
-
-const Name = () => {
-const [darkMode, setDarkMode] = useState(true)
+import {Link} from 'react-router-dom'
+const Name = ({setName}) => {
+const [darkMode, setDarkMode] = useState(true);
+const handleNameChange = (e) => {
+    setName(e.target.value);
+  };
   return (
     <>
          <div className= {darkMode ? 'bg-black text-gray-300 min-h-screen' : 'bg-white text-black min-h-screen'}>
@@ -15,11 +18,11 @@ const [darkMode, setDarkMode] = useState(true)
                 <div className='w-full md:w-1/2 lg:w-1/3 bg-gradient-to-br from-yellow-400 via-slate-400 to-indigo-300 p-8 rounded-xl shadow-lg shadow-yellow-300 mt-8'>
                     <form className='flex flex-col justify-center items-center gap-6 '>
                         <div>
-                            <input type='text' placeholder='Enter your name' required className='p-2 rounded-md bg-white text-black focus:outline-none focus:ring-2 focus:ring-purple-400'/>
+                            <input type='text' placeholder='Enter your name' required className='p-2 rounded-md bg-white text-black focus:outline-none focus:ring-2 focus:ring-purple-400' onChange={handleNameChange}/>
                         </div>
                         <div>
                             <button type='submit' className='mt-4 p-2 rounded-lg bg-gradient-to-r from-yellow-400 to-yellow-600 text-white font-semibold shadow-md hover:scale-105 transition-transform duration-300'>
-                                Continue
+                                <Link to='/main'>Continue</Link>
                             </button>
                         </div>
                     </form>
@@ -30,5 +33,4 @@ const [darkMode, setDarkMode] = useState(true)
     </>
   )
 }
-
 export default Name

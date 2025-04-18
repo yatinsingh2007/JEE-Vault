@@ -3,7 +3,7 @@ import {Sun,Moon} from 'lucide-react'
 import { motion } from 'framer-motion'
 import {Link} from 'react-router-dom'
 const HomePage = () => {
-  const [darkMode , setDarkMode] = useState(true)
+  const [darkMode , setDarkMode] = useState(true);
   return (
     <>
         <div className= {darkMode ? 'bg-black text-gray-300 min-h-screen' : 'bg-white text-black min-h-screen'}>
