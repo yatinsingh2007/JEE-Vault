@@ -5,7 +5,9 @@ import { signInWithEmailAndPassword } from 'firebase/auth'
 import { auth } from '../firebase/firebase'
 import {toast} from 'react-toastify'
 import { Link } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 const LoginPage = () => {
+  const navigate = useNavigate()
   const [darkMode, setDarkMode] = useState(true);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -16,6 +18,8 @@ const LoginPage = () => {
       const user = userCredential.user
       console.log(user)
       toast.success('Logged in successfully!')
+      navigate('/name')
+
     } catch (error) {
       console.error("Login error:", error.code);
   
