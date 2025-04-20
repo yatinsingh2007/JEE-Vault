@@ -1,7 +1,7 @@
-import React, { useState } from 'react'
+import React, { useState , useRef } from 'react'
 import { Sun, Moon } from 'lucide-react'
 import { motion } from 'framer-motion'
-import { signInWithEmailAndPassword } from 'firebase/auth'
+import { signInWithEmailAndPassword , GoogleAuthProvider , signInWithPopup} from 'firebase/auth'
 import { auth } from '../firebase/firebase'
 import {toast} from 'react-toastify'
 import { Link } from 'react-router-dom'
@@ -11,6 +11,7 @@ const LoginPage = () => {
   const [darkMode, setDarkMode] = useState(true);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const emailRef = useRef(null)
   const handleLogin = async (e) => {
     e.preventDefault()
     try {
@@ -34,6 +35,19 @@ const LoginPage = () => {
       }
   }
 }
+const handleGoogleSignIn = async () => {
+  try {
+    const provider = new GoogleAuthProvider();
+    const result = await signInWithPopup(auth, provider);
+    const user = result.user;
+    console.log(user);
+    toast.success("Logged in successfully!");
+    navigate("/name");
+  } catch (error) {
+    console.error("Google Sign-In error:", error);
+    toast.error(error.message);
+  }
+};
   return (
     <div className={darkMode ? 'bg-black text-gray-300 min-h-screen' : 'bg-white text-black min-h-screen'}>
       <div className='flex justify-end w-full p-4'>
@@ -52,7 +66,16 @@ const LoginPage = () => {
           <form className='flex flex-col gap-6' onSubmit={handleLogin}>
             <div className='flex flex-col'>
               <label className='text-sm mb-1 text-slate-900'>Email</label>
-              <input type='email' placeholder='Enter your email' required className='p-2 rounded-md bg-white text-black focus:outline-none focus:ring-2 focus:ring-purple-400' onChange={(e) => setEmail(e.target.value)}/>
+              <input type='email' placeholder='Enter your email' required className='p-2 rounded-md bg-white text-black focus:outline-none focus:ring-2 focus:ring-purple-400' ref = {emailRef} onChange={(e) => setEmail(e.target.value)} onBlur={
+                (e) => {
+                  e.preventDefault();
+                  if(emailRef.current.value === ''){
+                    emailRef.current.style.border = '2px solid red'
+                  }else{
+                    emailRef.current.style.border = '2px solid green'
+                  }
+                }
+              }/>
             </div>
             <div className='flex flex-col'>
               <label className='text-sm mb-1 text-slate-900'>Password</label>
@@ -61,6 +84,7 @@ const LoginPage = () => {
             <button type='submit' className='mt-4 p-2 rounded-lg bg-gradient-to-r from-yellow-400 to-yellow-600 text-white font-semibold shadow-md hover:scale-105 transition-transform duration-300'>
               Login
             </button>
+            <button className='mt-4 p-2 rounded-lg bg-gradient-to-r from-yellow-400 to-yellow-600 text-white font-semibold shadow-md hover:scale-105 transition-transform duration-300' onClick={handleGoogleSignIn}>Sign In with Google</button>
             <Link to = '/forgot-password' className='text-sm text-blue-500 hover:underline'>Forgot Password ?</Link>
           </form>
         </div>

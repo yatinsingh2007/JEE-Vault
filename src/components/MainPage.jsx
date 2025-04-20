@@ -25,7 +25,7 @@ const MainPage = ({ name }) => {
         <div className='flex justify-start items-center m-4'>
           <h1 className='text-lg font-semibold md:text-3xl'>{greeting}, <span className='text-lg text-transparent bg-clip-text bg-gradient-to-r from-amber-300 via-amber-100 to-zinc-600 md:text-3xl'>{name}</span></h1>
         </div>
-        <div className='md:flex md:justify-around mt-56 items-center'>
+        <div className='md:flex md:justify-around mt-56 items-center flex flex-col gap-10'>
             <div className='bg-slate-800 p-10 flex flex-col justify-around items-center gap-8 rounded-2xl'>
                 <div>
                     <img src='https://miro.medium.com/v2/resize:fit:1400/1*ogpyHbsWi7mBZIod3_aiug.png' alt='math-logo' className='h-20 w-32 rounded-lg'/>
